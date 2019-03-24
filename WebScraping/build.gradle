@@ -1,0 +1,31 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+
+repositories
+{
+    jcenter()
+}
+
+dependencies
+{
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile "org.mockito:mockito-core:2.+"
+    testCompile "com.github.tomakehurst:wiremock-jre8:2.22.0"
+}
+
+jar
+{
+    manifest
+    {
+        attributes ("Implementation-Title": "SimpleGradleApplication",
+                    "Implementation-Version": 0.1,
+                    "Main-Class": "de.javaprofi.helloworld.HelloGradle")
+    }
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
